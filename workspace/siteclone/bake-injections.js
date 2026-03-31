@@ -5,8 +5,8 @@ const ROOT = path.join(__dirname, 'output', 'www.lightwavesolar.com');
 const SENTINEL = '<!-- devin-injected -->';
 
 const CSS_INJECT = `<style>
-/* Hide nav buttons embedded inside each cloned slide item */
-.owl-item .owl-nav { display: none !important; }
+/* Hide all carousel nav arrows and dots - auto-rotate only */
+.owl-nav, .owl-dots { display: none !important; }
 /* Fix logo stretching */
 .logo-image, .logo-image-phone { object-fit: contain !important; width: auto !important; }
 /* Clip carousel overflow so only active slide shows */
