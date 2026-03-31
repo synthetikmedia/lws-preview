@@ -164,6 +164,101 @@
   visibility: hidden;
   pointer-events: none;
 }</style>
+<!-- devin-injected -->
+<link rel="canonical" href="https://www.lightwavesolar.com/lws-presentation/leads.html">
+<meta property="og:image" content="https://www.lightwavesolar.com/assets/images/LightWave-Residential-Customers-Were-Going-Solar-126a8aa0.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SolarEnergyEquipmentSupplier",
+  "name": "LightWave Solar",
+  "url": "https://www.lightwavesolar.com",
+  "logo": "https://www.lightwavesolar.com/assets/images/lightwave-only-logo-4df5271b.png",
+  "foundingDate": "2006",
+  "description": "LightWave Solar has been helping people meet their energy goals since 2006, providing custom solar designs and installations across the Tennessee Valley and Southeast region.",
+  "numberOfEmployees": {
+    "@type": "QuantitativeValue",
+    "value": 70
+  },
+  "areaServed": [
+    "Tennessee",
+    "Nashville",
+    "Knoxville",
+    "Chattanooga",
+    "Memphis"
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "3026 Owen Drive, Suite 104",
+    "addressLocality": "Nashville",
+    "addressRegion": "TN",
+    "postalCode": "37013",
+    "addressCountry": "US"
+  },
+  "telephone": "+16156414050",
+  "email": "info@lightwavesolar.com",
+  "sameAs": [
+    "https://www.facebook.com/LightWaveSolar/",
+    "https://www.linkedin.com/company/lightwave-solar-electric/",
+    "https://instagram.com/lightwavesolar",
+    "https://x.com/lightwavesolar",
+    "https://www.youtube.com/LightWaveSolar"
+  ]
+}
+</script>
+<style>
+/* Hide nav buttons embedded inside each cloned slide item */
+.owl-item .owl-nav { display: none !important; }
+/* Fix logo stretching */
+.logo-image, .logo-image-phone { object-fit: contain !important; width: auto !important; }
+/* Clip carousel overflow so only active slide shows */
+.owl-stage-outer { overflow: hidden !important; }
+/* Fix droppics gallery - 5x5 grid */
+div.droppicsgallery div.droppicspictures {
+  display: flex !important;
+  flex-wrap: wrap !important;
+}
+div.droppicsgallery div.droppicspictures div.wimg {
+  width: 252px !important;
+  height: 252px !important;
+  overflow: hidden !important;
+  display: inline-block !important;
+  vertical-align: top !important;
+  margin: 3px !important;
+}
+div.droppicsgallery div.droppicspictures div.wimg a {
+  display: block !important;
+  width: 252px !important;
+  height: 252px !important;
+}
+div.droppicsgallery div.droppicspictures div.wimg img,
+div.droppicsgallery div.droppicspictures div.wimg img.img {
+  width: 252px !important;
+  height: 252px !important;
+  max-width: none !important;
+  object-fit: cover !important;
+  display: block !important;
+  margin: 0 !important;
+  margin-top: 0 !important;
+}
+.mk-slideshow-title { color: white !important; font-size: 80px !important; line-height: 1.1 !important; }
+.mk-slideshow-subtitle { font-size: 28px !important; line-height: 1.6 !important; }
+@media (max-width: 991px) {
+  .mk-slideshow-title { font-size: 52px !important; }
+  .mk-slideshow-subtitle { font-size: 22px !important; }
+}
+@media (max-width: 575px) {
+  .mk-slideshow-title { font-size: 38px !important; }
+  .mk-slideshow-subtitle { font-size: 18px !important; }
+}
+.owl-stage { transform: none !important; width: auto !important; display: flex !important; }
+.owl-item { flex-shrink: 0; }
+.owl-item.cloned { display: none !important; }
+.owl-item:not(.active) { display: none !important; }
+.owl-item.active { display: block !important; width: 100% !important; }
+</style>
 </head>
 <body>
 <div style="width:100%;max-width:620px;margin:0 auto;">
@@ -208,5 +303,11 @@
   <a class="nav-arrow" href="expense-reporting.html">&#8249;</a>
   <a class="nav-arrow" href="proposal.html">&#8250;</a>
 </div>
-</body>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  document.querySelectorAll('.mk-slideshow-title').forEach(function(el){
+    el.innerHTML=el.innerHTML.replace(/PASSION\./g,'<span style="color:#f9a01b;">PASSION.</span>');
+  });
+});
+</script></body>
 </html>
