@@ -1,7 +1,0 @@
-{
-  "rewrites": [
-    { "source": "/assets/(.*)", "destination": "/assets/$1" },
-    { "source": "/screenshots/(.*)", "destination": "/screenshots/$1" },
-    { "source": "/(.*)", "destination": "/api/serve" }
-  ]
-}
