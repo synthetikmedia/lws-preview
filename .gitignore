@@ -1,0 +1,52 @@
+# Secrets & credentials
+agents/*/agent/auth-profiles.json
+credentials/
+identity/
+*.key
+*.pem
+
+# Tokens & auth
+openclaw.json
+
+# Sessions (large, ephemeral)
+agents/*/sessions/
+
+# QMD indexes & embeddings
+agents/*/qmd/
+
+# Logs
+logs/
+*.log
+
+# Canvas & temp
+canvas/
+node_modules/
+*.tmp
+
+# Workspace junk (Chrome profiles, screenshots, scripts)
+workspace/chrome_automation_profile*/
+workspace/*.png
+workspace/*.py
+workspace/*.json
+workspace/.openclaw/
+workspace/hooks/
+workspace/skills/
+
+# Backups
+*.bak
+*.backup.*
+*.bak.*
+
+# Other state
+exec-approvals.json
+update-check.json
+browser/
+cron/
+devices/
+media/
+subagents/
+gateway.cmd
+
+# OS
+Thumbs.db
+.DS_Store
