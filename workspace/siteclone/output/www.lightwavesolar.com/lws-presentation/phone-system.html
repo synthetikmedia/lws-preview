@@ -1,0 +1,277 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lightwave Solar — Integrated Phone System</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: #f0ede8;
+    color: #1a1a1a;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 24px;
+  }
+
+  .slide {
+    width: 100%;
+    max-width: 620px;
+    position: relative;
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 48px;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.1);
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #999;
+    text-decoration: none;
+    margin-bottom: 40px;
+    transition: color 0.2s;
+  }
+
+  .back-link:hover { color: #f59e0b; }
+
+  .title {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #f59e0b;
+    margin-bottom: 8px;
+  }
+
+  .subtitle {
+    text-align: center;
+    font-size: 17px;
+    color: #888;
+    margin-bottom: 44px;
+  }
+
+  /* What it does */
+  .what-block {
+    border: 1px solid #eee;
+    background: #fafafa;
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin-bottom: 44px;
+  }
+
+  .what-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #999;
+    margin-bottom: 16px;
+  }
+
+  .what-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 24px;
+  }
+
+  .what-list li {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a1a1a;
+    line-height: 1.3;
+  }
+
+  /* Cost table */
+  .col-headers {
+    display: grid;
+    grid-template-columns: 1fr 130px 180px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 2px;
+  }
+
+  .col-headers span {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #bbb;
+    text-align: right;
+  }
+
+  .col-headers span:first-child { text-align: left; }
+
+  .cost-row {
+    display: grid;
+    grid-template-columns: 1fr 130px 180px;
+    align-items: baseline;
+    padding: 14px 0;
+    border-bottom: 1px solid #eee;
+  }
+
+  .cost-label {
+    font-size: 15px;
+    color: #666;
+  }
+
+  .per-user {
+    font-size: 14px;
+    font-weight: 500;
+    text-align: right;
+    color: #999;
+  }
+
+  .cost-val {
+    font-size: 22px;
+    font-weight: 700;
+    text-align: right;
+  }
+
+  .cost-val.them { color: #f87171; }
+  .cost-val.us { color: #34d399; font-weight: 800; }
+  .cost-label.us { color: #1a1a1a; font-weight: 700; }
+
+  /* Savings total */
+  .savings-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 20px 0 0;
+  }
+
+  .savings-total .label {
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #999;
+  }
+
+  .savings-total .amount {
+    font-size: 36px;
+    font-weight: 900;
+    color: #34d399;
+  }
+
+  .savings-total .amount span {
+    font-size: 15px;
+    font-weight: 500;
+    color: #999;
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    margin-top: 56px;
+    font-size: 11px;
+    color: #ccc;
+    letter-spacing: 1px;
+  }
+.nav-arrows {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 50%;
+  width: 720px;
+  margin-left: -360px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  pointer-events: none;
+  z-index: 100;
+}
+.nav-arrow {
+  pointer-events: all;
+  background: rgba(249, 160, 27, 0.9);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  font-size: 22px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: background 0.15s, transform 0.15s;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  flex-shrink: 0;
+}
+.nav-arrow:hover {
+  background: #f9a01b;
+  transform: scale(1.1);
+}
+.nav-arrow.hidden {
+  visibility: hidden;
+  pointer-events: none;
+}</style>
+</head>
+<body>
+<div style="width:100%;max-width:620px;margin:0 auto;">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
+    <img src="../assets/images/lightwave-only-logo-4df5271b.png" alt="LightWave Solar" style="height:44px;object-fit:contain;">
+    <a class="back-link" href="index.html" style="margin-bottom:0;">← Back</a>
+  </div>
+  <div style="text-align:center;margin-bottom:24px;">
+    <div style="font-size:clamp(26px,4vw,40px);font-weight:900;letter-spacing:-1px;color:#1a1a1a;line-height:1.2;">Custom software.<br><em style="color:#f9a01b;">Built for LightWave.</em></div>
+  </div>
+</div>
+<div class="slide">
+  <div class="title">Integrated Phone System</div>
+  <div class="subtitle">Custom-built vs. off-the-shelf</div>
+
+  <!-- What it does -->
+  <div class="what-block">
+    <div class="what-label">What it does</div>
+    <ul class="what-list">
+      <li>• Department Routing</li>
+      <li>• Shared VM Inboxes</li>
+      <li>• AI Call Summaries</li>
+      <li>• CRM Integration</li>
+    </ul>
+  </div>
+
+  <!-- Cost comparison -->
+  <div class="col-headers">
+    <span></span>
+    <span>Per User / yr</span>
+    <span>Total (5 users) / yr</span>
+  </div>
+  <div class="cost-row">
+    <span class="cost-label">Aircall (off the shelf)</span>
+    <span class="per-user">$722</span>
+    <span class="cost-val them">$3,612</span>
+  </div>
+  <div class="cost-row">
+    <span class="cost-label us">Custom built</span>
+    <span class="per-user">$34</span>
+    <span class="cost-val us">$168</span>
+  </div>
+
+  <div class="savings-total">
+    <div class="label">Annual savings</div>
+    <div class="amount">$3,444 <span>/ yr</span></div>
+  </div>
+
+
+
+</div>
+<div class="nav-arrows">
+  <a class="nav-arrow hidden" href="#">&#8249;</a>
+  <a class="nav-arrow" href="expense-reporting.html">&#8250;</a>
+</div>
+</body>
+</html>

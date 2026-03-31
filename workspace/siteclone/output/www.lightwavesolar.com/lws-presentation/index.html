@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LightWave Solar — Presentation</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #111113;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+    .logo {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #f9a01b;
+      margin-bottom: 16px;
+    }
+    h1 {
+      font-size: clamp(28px, 5vw, 48px);
+      font-weight: 900;
+      letter-spacing: -1px;
+      margin-bottom: 8px;
+      text-align: center;
+    }
+    .sub {
+      font-size: 15px;
+      color: #666;
+      margin-bottom: 48px;
+      text-align: center;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      width: 100%;
+      max-width: 860px;
+    }
+    .card {
+      background: #1c1c20;
+      border: 1px solid #2a2a2e;
+      border-radius: 16px;
+      padding: 28px 24px;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.15s, transform 0.15s;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .card:hover {
+      border-color: #f9a01b;
+      transform: translateY(-3px);
+    }
+    .card-icon { font-size: 28px; }
+    .card-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: #fff;
+    }
+    .card-desc {
+      font-size: 13px;
+      color: #666;
+      line-height: 1.5;
+    }
+    .card-arrow {
+      margin-top: auto;
+      font-size: 13px;
+      color: #f9a01b;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class="logo">⚡ LightWave Solar</div>
+  <h1>Presentation Materials</h1>
+  <p class="sub">Click any slide to open it</p>
+
+  <div class="grid">
+    <a href="proposal.html" class="card">
+      <div class="card-icon">📊</div>
+      <div class="card-title">Before & After</div>
+      <div class="card-desc">Side-by-side comparison of what we improved on the website.</div>
+      <div class="card-arrow">Open →</div>
+    </a>
+
+    <a href="leads.html" class="card">
+      <div class="card-icon">🎯</div>
+      <div class="card-title">Lead Generation</div>
+      <div class="card-desc">How the new site captures more leads across Tennessee markets.</div>
+      <div class="card-arrow">Open →</div>
+    </a>
+
+    <a href="roi.html" class="card">
+      <div class="card-icon">💰</div>
+      <div class="card-title">ROI Breakdown</div>
+      <div class="card-desc">The numbers behind the investment and expected return.</div>
+      <div class="card-arrow">Open →</div>
+    </a>
+
+    <a href="deck.html" class="card">
+      <div class="card-icon">🖥️</div>
+      <div class="card-title">Full Deck</div>
+      <div class="card-desc">Complete presentation with all slides and talking points.</div>
+      <div class="card-arrow">Open →</div>
+    </a>
+  </div>
+</body>
+</html>

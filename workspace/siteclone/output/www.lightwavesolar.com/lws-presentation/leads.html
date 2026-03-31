@@ -1,0 +1,212 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lightwave Solar — Tesla Leads ROI</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: #f0ede8;
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 24px;
+  }
+
+  .slide {
+    width: 100%;
+    max-width: 620px;
+    background: #7f1d1d;
+    border-radius: 20px;
+    padding: 48px;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.15);
+  }
+
+  .title {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #f59e0b;
+    margin-bottom: 8px;
+  }
+
+  .tagline {
+    text-align: center;
+    font-size: 17px;
+    color: #fff;
+    margin-bottom: 48px;
+  }
+
+  .col-headers {
+    display: grid;
+    grid-template-columns: 1fr 160px 160px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    margin-bottom: 2px;
+  }
+
+  .col-headers span {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #d1d5db;
+    text-align: center;
+  }
+
+  .col-headers span:first-child { text-align: left; }
+
+  .row {
+    display: grid;
+    grid-template-columns: 1fr 160px 160px;
+    align-items: baseline;
+    padding: 22px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+  }
+
+  .row .label { font-size: 20px; color: #fff; }
+  .row .label strong { color: #fff; font-weight: 900; }
+
+  .row .deals {
+    font-size: 19px;
+    font-weight: 500;
+    text-align: center;
+    color: #d1d5db;
+  }
+
+  .row .revenue {
+    font-size: 30px;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .row.before .revenue { color: #d1d5db; }
+  .row.after .revenue { color: #f59e0b; }
+
+  .total {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 28px 0 0;
+  }
+
+  .total .label {
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #fff;
+  }
+
+  .total .amount {
+    font-size: 56px;
+    font-weight: 900;
+    color: #f59e0b;
+    line-height: 1;
+  }
+
+  .total .amount span {
+    font-size: 16px;
+    font-weight: 500;
+    color: #d1d5db;
+  }
+
+  .footer {
+    text-align: center;
+    margin-top: 56px;
+    font-size: 11px;
+    color: #1f2937;
+    letter-spacing: 1px;
+  }
+.nav-arrows {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 50%;
+  width: 720px;
+  margin-left: -360px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  pointer-events: none;
+  z-index: 100;
+}
+.nav-arrow {
+  pointer-events: all;
+  background: rgba(249, 160, 27, 0.9);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  font-size: 22px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: background 0.15s, transform 0.15s;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  flex-shrink: 0;
+}
+.nav-arrow:hover {
+  background: #f9a01b;
+  transform: scale(1.1);
+}
+.nav-arrow.hidden {
+  visibility: hidden;
+  pointer-events: none;
+}</style>
+</head>
+<body>
+<div style="width:100%;max-width:620px;margin:0 auto;">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
+    <img src="../assets/images/lightwave-only-logo-4df5271b.png" alt="LightWave Solar" style="height:44px;object-fit:contain;">
+    <a href="index.html" style="font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:#1a1a1a;text-decoration:none;">← Back</a>
+  </div>
+  <div style="text-align:center;margin-bottom:24px;">
+    <div style="font-size:clamp(26px,4vw,40px);font-weight:900;letter-spacing:-1px;color:#1a1a1a;line-height:1.2;">Faster response time.<br><em style="color:#f59e0b;">Higher close rate.</em></div>
+  </div>
+</div>
+<div class="slide">
+  <div class="title">⚡ Tesla Leads — Auto-Text</div>
+  <div class="tagline">100 leads / month · $70,000 avg deal · immediate AI follow-up on missed calls</div>
+
+  <div class="col-headers">
+    <span></span>
+    <span>Deals Closed / mo</span>
+    <span>Revenue / yr</span>
+  </div>
+
+  <div class="row before">
+    <span class="label">Before (1% close rate)</span>
+    <span class="deals">1 deal</span>
+    <span class="revenue">$840,000</span>
+  </div>
+  <div class="row after">
+    <span class="label"><strong>After TextBack (4% close rate)</strong></span>
+    <span class="deals">4 deals</span>
+    <span class="revenue">$3,360,000</span>
+  </div>
+
+  <div class="total">
+    <div class="label">Additional revenue unlocked</div>
+    <div class="amount">$2,520,000 <span>/ yr</span></div>
+  </div>
+
+
+
+</div>
+<div class="nav-arrows">
+  <a class="nav-arrow" href="expense-reporting.html">&#8249;</a>
+  <a class="nav-arrow" href="proposal.html">&#8250;</a>
+</div>
+</body>
+</html>

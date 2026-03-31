@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Residential Solar — Lightwave Solar</title>
+  <meta name="description" content="Custom residential solar systems for Tennessee Valley homeowners. Roof-mounted panels, battery storage, and full turnkey installation by Lightwave Solar." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* --- Page-specific styles --- */
+    .benefit-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      margin-top: 48px;
+    }
+
+    .benefit-card {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: var(--radius-md);
+      padding: 28px 24px;
+      text-align: center;
+      transition: all var(--transition);
+    }
+
+    .benefit-card:hover {
+      background: rgba(245,166,35,.1);
+      border-color: rgba(245,166,35,.3);
+      transform: translateY(-4px);
+    }
+
+    .benefit-card .icon {
+      font-size: 2.2rem;
+      margin-bottom: 12px;
+    }
+
+    .benefit-card h4 {
+      color: var(--white);
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+
+    .benefit-card p {
+      color: rgba(255,255,255,.55);
+      font-size: 0.85rem;
+      line-height: 1.6;
+    }
+
+    .powerwall-section {
+      background: linear-gradient(135deg, #0A1628 0%, #112240 100%);
+      padding: 100px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .powerwall-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(245,166,35,.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(245,166,35,.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    .powerwall-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    @media (max-width: 768px) {
+      .powerwall-grid { grid-template-columns: 1fr; gap: 48px; }
+    }
+
+    .powerwall-visual {
+      background: linear-gradient(180deg, #1a3a5c 0%, #0a1628 100%);
+      border-radius: var(--radius-lg);
+      aspect-ratio: 3/4;
+      max-height: 440px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      border: 1px solid rgba(245,166,35,.15);
+      box-shadow: 0 0 80px rgba(245,166,35,.08);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .powerwall-visual::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 30%, rgba(245,166,35,.12) 0%, transparent 60%);
+    }
+
+    .pw-label {
+      color: var(--gold);
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 1.4rem;
+      letter-spacing: 0.05em;
+      position: relative;
+    }
+
+    .pw-icon {
+      font-size: 5rem;
+      position: relative;
+    }
+
+    .pw-badge {
+      background: var(--gold);
+      color: var(--navy);
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 0.8rem;
+      padding: 6px 16px;
+      border-radius: 50px;
+      letter-spacing: 0.05em;
+      position: relative;
+    }
+
+    .savings-callout {
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      text-align: center;
+      margin-top: 48px;
+    }
+
+    .savings-callout h3 {
+      color: var(--navy);
+      font-size: 1.6rem;
+      margin-bottom: 8px;
+    }
+
+    .savings-callout p {
+      color: rgba(10,22,40,.7);
+      font-size: 0.95rem;
+    }
+
+    .faq {
+      background: var(--off-white);
+      padding: 100px 0;
+    }
+
+    .faq-list {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--gray-light);
+      margin-bottom: 12px;
+      overflow: hidden;
+      transition: box-shadow var(--transition);
+    }
+
+    .faq-item:hover { box-shadow: var(--shadow-sm); }
+
+    .faq-question {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 24px;
+      background: none;
+      border: none;
+      font-family: var(--font-body);
+      font-size: 0.97rem;
+      font-weight: 600;
+      color: var(--navy);
+      cursor: pointer;
+      text-align: left;
+      gap: 16px;
+    }
+
+    .faq-arrow {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: rgba(245,166,35,.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      flex-shrink: 0;
+      font-size: 1rem;
+      transition: transform var(--transition), background var(--transition);
+    }
+
+    .faq-item.open .faq-arrow {
+      transform: rotate(45deg);
+      background: var(--gold);
+      color: var(--navy);
+    }
+
+    .faq-answer {
+      padding: 0 24px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 300px;
+      padding: 0 24px 20px;
+    }
+
+    .faq-answer p {
+      color: var(--gray);
+      font-size: 0.92rem;
+      line-height: 1.75;
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="navbar-inner">
+    <a href="index.html" class="nav-logo">
+      <svg class="logo-icon" viewBox="0 0 36 36" fill="none">
+        <circle cx="18" cy="18" r="18" fill="rgba(245,166,35,0.15)"/>
+        <circle cx="18" cy="18" r="7" fill="#F5A623"/>
+        <line x1="18" y1="2" x2="18" y2="8" stroke="#F5A623" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="18" y1="28" x2="18" y2="34" stroke="#F5A623" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="2" y1="18" x2="8" y2="18" stroke="#F5A623" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="28" y1="18" x2="34" y2="18" stroke="#F5A623" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="6.1" y1="6.1" x2="10.3" y2="10.3" stroke="#F5A623" stroke-width="2" stroke-linecap="round"/>
+        <line x1="25.7" y1="25.7" x2="29.9" y2="29.9" stroke="#F5A623" stroke-width="2" stroke-linecap="round"/>
+        <line x1="29.9" y1="6.1" x2="25.7" y2="10.3" stroke="#F5A623" stroke-width="2" stroke-linecap="round"/>
+        <line x1="10.3" y1="25.7" x2="6.1" y2="29.9" stroke="#F5A623" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      Lightwave<span class="accent"> Solar</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="residential.html">Residential</a></li>
+      <li><a href="commercial.html">Commercial</a></li>
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="contact.html" class="btn btn-primary nav-cta">Get a Free Quote</a></li>
+    </ul>
+    <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-nav">
+  <a href="index.html">Home</a>
+  <a href="residential.html">Residential Solar</a>
+  <a href="commercial.html">Commercial Solar</a>
+  <a href="index.html#services">All Services</a>
+  <a href="contact.html">Contact Us</a>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="container page-hero-content">
+    <span class="section-label reveal">Residential Solar</span>
+    <h1 class="reveal reveal-delay-1">Your Home, Powered<br>by the Sun</h1>
+    <p class="reveal reveal-delay-2">Custom-designed rooftop solar for Tennessee Valley homeowners. Slash your electric bill, gain energy independence, and add lasting value to your home — with a team you can trust.</p>
+    <div style="margin-top: 32px; display: flex; gap: 16px; flex-wrap: wrap;" class="reveal reveal-delay-3">
+      <a href="contact.html" class="btn btn-primary btn-lg">Get My Free Assessment</a>
+      <a href="#how-it-works" class="btn btn-outline">See How It Works</a>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS OVERVIEW -->
+<section class="why-us section-pad">
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="section-label">The Benefits</span>
+      <h2 class="section-title light">Why Homeowners Choose Solar</h2>
+      <p class="section-subtitle light">The advantages go beyond your utility bill. Going solar is one of the highest-ROI upgrades you can make to your home.</p>
+    </div>
+
+    <div class="benefit-cards">
+      <div class="benefit-card reveal reveal-delay-1">
+        <div class="icon">💰</div>
+        <h4>Dramatically Lower Bills</h4>
+        <p>Most homeowners eliminate 70–100% of their electric bill the month their system goes live.</p>
+      </div>
+      <div class="benefit-card reveal reveal-delay-2">
+        <div class="icon">🏠</div>
+        <h4>Increased Home Value</h4>
+        <p>Studies show solar homes sell for an average of 4% more — and often sell faster.</p>
+      </div>
+      <div class="benefit-card reveal reveal-delay-3">
+        <div class="icon">🛡️</div>
+        <h4>Rate Protection</h4>
+        <p>Lock in your energy cost and stop paying whatever your utility decides to charge next year.</p>
+      </div>
+      <div class="benefit-card reveal reveal-delay-4">
+        <div class="icon">🌱</div>
+        <h4>Environmental Impact</h4>
+        <p>A typical home system offsets tons of CO₂ annually — a meaningful contribution to a cleaner future.</p>
+      </div>
+      <div class="benefit-card reveal reveal-delay-5">
+        <div class="icon">⚡</div>
+        <h4>Energy Independence</h4>
+        <p>Add battery storage and keep your home running even when the grid goes dark.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="feature-section" id="how-it-works">
+  <div class="container">
+    <div class="feature-split">
+      <div class="reveal-left">
+        <span class="section-label">Our Approach</span>
+        <h2 class="section-title">Every System Built<br>From Scratch for You</h2>
+        <p>We don't believe in cookie-cutter solar. Before we ever draw a schematic, we sit down with you, understand how you use energy, and design a system that fits your home, your roof, and your goals.</p>
+
+        <div class="checklist">
+          <div class="check-item">
+            <div class="check-icon">✓</div>
+            <p><strong>Site-specific energy modeling</strong> — we calculate production based on your actual roof angle, shading, and orientation.</p>
+          </div>
+          <div class="check-item">
+            <div class="check-icon">✓</div>
+            <p><strong>Premium equipment selection</strong> — high-efficiency panels and micro-inverters or string inverters chosen for your specific setup.</p>
+          </div>
+          <div class="check-item">
+            <div class="check-icon">✓</div>
+            <p><strong>Full permitting and utility coordination</strong> — we handle all the paperwork and approvals so you don't have to.</p>
+          </div>
+          <div class="check-item">
+            <div class="check-icon">✓</div>
+            <p><strong>Clean, code-compliant installation</strong> — our certified crews take pride in a job done right, every time.</p>
+          </div>
+          <div class="check-item">
+            <div class="check-icon">✓</div>
+            <p><strong>Post-install monitoring &amp; support</strong> — we stay available for the life of your system, not just the install day.</p>
+          </div>
+        </div>
+
+        <div style="margin-top: 32px;">
+          <a href="contact.html" class="btn btn-primary">Start My Custom Design</a>
+        </div>
+      </div>
+
+      <div class="reveal-right">
+        <div class="solar-panel-graphic">
+          <div class="glow-circle"></div>
+          <svg width="120" height="120" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="position:relative;z-index:1;">
+            <!-- Solar panel grid -->
+            <rect x="10" y="20" width="80" height="50" rx="4" fill="none" stroke="#F5A623" stroke-width="2"/>
+            <!-- Panel cells -->
+            <line x1="10" y1="37" x2="90" y2="37" stroke="#F5A623" stroke-width="1" opacity="0.5"/>
+            <line x1="10" y1="53" x2="90" y2="53" stroke="#F5A623" stroke-width="1" opacity="0.5"/>
+            <line x1="37" y1="20" x2="37" y2="70" stroke="#F5A623" stroke-width="1" opacity="0.5"/>
+            <line x1="63" y1="20" x2="63" y2="70" stroke="#F5A623" stroke-width="1" opacity="0.5"/>
+            <!-- Sun -->
+            <circle cx="50" cy="10" r="6" fill="#F5A623"/>
+            <line x1="50" y1="1" x2="50" y2="3" stroke="#F5A623" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="59" y1="3" x2="58" y2="5" stroke="#F5A623" stroke-width="1.5" stroke-linecap="round"/>
+            <!-- House outline below panel -->
+            <path d="M30 80 L50 68 L70 80 L70 96 L30 96 Z" fill="none" stroke="#F5A623" stroke-width="1.5" opacity="0.6"/>
+            <rect x="44" y="84" width="12" height="12" fill="none" stroke="#F5A623" stroke-width="1.5" opacity="0.6"/>
+            <!-- Lightning bolt / energy -->
+            <path d="M46 38 L43 47 L49 47 L44 58 L57 44 L51 44 L56 33 Z" fill="#F5A623" opacity="0.9"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BATTERY STORAGE -->
+<section class="powerwall-section" id="storage">
+  <div class="container">
+    <div class="powerwall-grid">
+      <div class="reveal-left">
+        <div class="powerwall-visual">
+          <div class="pw-icon">🔋</div>
+          <div class="pw-label">Tesla Powerwall</div>
+          <div class="pw-badge">Authorized Installer</div>
+          <div style="position:relative;z-index:1;color:rgba(255,255,255,.4);font-size:.82rem;margin-top:8px;">13.5 kWh usable capacity</div>
+        </div>
+      </div>
+
+      <div class="reveal-right">
+        <span class="section-label">Battery Storage</span>
+        <h2 class="section-title light">True Energy Independence<br>with Tesla Powerwall</h2>
+        <p style="color:rgba(255,255,255,.7);font-size:1.05rem;margin-bottom:28px;">
+          Solar alone keeps your bills low. Solar plus Powerwall keeps your lights on. As an authorized Tesla Powerwall installer,
+          we integrate battery storage seamlessly with your solar system for whole-home backup.
+        </p>
+
+        <div class="checklist">
+          <div class="check-item">
+            <div class="check-icon">✓</div>
+            <p style="color:rgba(255,255,255,.65);"><strong style="color:var(--white);">Automatic backup activation</strong> — detects outages in milliseconds and switches seamlessly. No generator, no extension cords.</p>
+          </div>
+          <div class="check-item">
+            <div class="check-icon">✓</div>
+            <p style="color:rgba(255,255,255,.65);"><strong style="color:var(--white);">Store excess solar energy</strong> — charge during the day, draw from your battery at night or peak rate hours.</p>
+          </div>
+          <div class="check-item">
+            <div class="check-icon">✓</div>
+            <p style="color:rgba(255,255,255,.65);"><strong style="color:var(--white);">Monitor from your phone</strong> — Tesla's app shows real-time energy flow, battery state, and solar production.</p>
+          </div>
+          <div class="check-item">
+            <div class="check-icon">✓</div>
+            <p style="color:rgba(255,255,255,.65);"><strong style="color:var(--white);">Scalable — add units as needed</strong> — one Powerwall is 13.5 kWh. Stack multiples for larger homes or longer backup duration.</p>
+          </div>
+        </div>
+
+        <div style="margin-top: 36px;">
+          <a href="contact.html" class="btn btn-primary">Add Powerwall to My Project</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SAVINGS SECTION -->
+<section class="feature-section alt">
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="section-label">The Numbers</span>
+      <h2 class="section-title">What Can Solar Save You?</h2>
+      <p class="section-subtitle">Every home is different — but the math consistently points in the same direction.</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; margin-top: 48px;">
+      <div class="service-card reveal reveal-delay-1" style="text-align:center;">
+        <div class="stat-number" style="font-size:2.8rem; color: var(--gold);">$1,500</div>
+        <p style="color:var(--gray);margin-top:8px;font-size:.9rem;">Average annual electric bill savings for a Tennessee homeowner</p>
+      </div>
+      <div class="service-card reveal reveal-delay-2" style="text-align:center;">
+        <div class="stat-number" style="font-size:2.8rem; color: var(--gold);">6–9</div>
+        <p style="color:var(--gray);margin-top:8px;font-size:.9rem;">Years to typical payback period, including federal tax incentives</p>
+      </div>
+      <div class="service-card reveal reveal-delay-3" style="text-align:center;">
+        <div class="stat-number" style="font-size:2.8rem; color: var(--gold);">30%</div>
+        <p style="color:var(--gray);margin-top:8px;font-size:.9rem;">Federal Investment Tax Credit (ITC) available through 2032</p>
+      </div>
+      <div class="service-card reveal reveal-delay-4" style="text-align:center;">
+        <div class="stat-number" style="font-size:2.8rem; color: var(--gold);">25+</div>
+        <p style="color:var(--gray);margin-top:8px;font-size:.9rem;">Years of reliable production from a quality solar installation</p>
+      </div>
+    </div>
+
+    <div class="savings-callout reveal" style="margin-top: 48px;">
+      <h3>The best time to go solar was yesterday. The second best time is today.</h3>
+      <p>Every month you wait is another month of paying full retail utility rates. Let's run your numbers — free, no obligation.</p>
+      <a href="contact.html" class="btn btn-outline-dark btn-lg" style="margin-top: 24px;">Get My Free Savings Estimate</a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="section-label">Questions?</span>
+      <h2 class="section-title">Common Questions from Homeowners</h2>
+      <p class="section-subtitle">We've heard them all — here are the ones we get most often.</p>
+    </div>
+
+    <div class="faq-list">
+      <div class="faq-item reveal reveal-delay-1">
+        <button class="faq-question">
+          How long does the installation process take?
+          <span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>From contract to permission-to-operate, most residential projects take 6–12 weeks. The bulk of that time is permitting and utility approval — both of which we manage for you. The physical installation typically takes 1–3 days depending on system size.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal reveal-delay-2">
+        <button class="faq-question">
+          Will solar work if my roof isn't south-facing?
+          <span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Yes — while south-facing is ideal, east and west facing roofs can still produce very efficiently. Our design team will assess your specific roof geometry and solar access, and model production accurately so you know exactly what to expect before you sign anything.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal reveal-delay-3">
+        <button class="faq-question">
+          What happens if my roof needs repairs after solar is installed?
+          <span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>We can temporarily remove and reinstall panels if roof work is needed. We'll walk you through the process and ensure everything is watertight when panels are reinstalled. We also assess roof condition before installation and will flag any concerns up front.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal reveal-delay-4">
+        <button class="faq-question">
+          What financing options are available?
+          <span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>We work with multiple solar lending partners to offer $0-down loans with competitive rates. Many customers finance their system and immediately see positive monthly cash flow — their loan payment is less than their old electric bill. We'll walk you through all options during your free consultation.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal reveal-delay-5">
+        <button class="faq-question">
+          What warranties come with a Lightwave Solar system?
+          <span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Equipment warranties vary by manufacturer but typically include 25-year panel performance guarantees and 10–12 year product warranties. We also stand behind our workmanship. During your consultation, we'll detail the specific warranties for every component in your proposed system.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner section-pad-sm">
+  <div class="container">
+    <div class="cta-inner reveal">
+      <div>
+        <h2>Take the First Step Today</h2>
+        <p>A free, no-pressure site assessment is all it takes to see what solar can do for your home.</p>
+      </div>
+      <a href="contact.html" class="btn btn-cta-dark btn-lg">Schedule My Free Assessment</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <svg width="28" height="28" viewBox="0 0 36 36" fill="none">
+            <circle cx="18" cy="18" r="7" fill="#F5A623"/>
+            <line x1="18" y1="2" x2="18" y2="8" stroke="#F5A623" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="18" y1="28" x2="18" y2="34" stroke="#F5A623" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="2" y1="18" x2="8" y2="18" stroke="#F5A623" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="28" y1="18" x2="34" y2="18" stroke="#F5A623" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+          Lightwave<span class="accent"> Solar</span>
+        </div>
+        <p>Tennessee Valley's trusted source for turnkey solar solutions since 2006. Experience. Quality. Passion.</p>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul class="footer-links">
+          <li><a href="residential.html">Residential Solar</a></li>
+          <li><a href="commercial.html">Commercial Solar</a></li>
+          <li><a href="contact.html">Utility-Scale Solar</a></li>
+          <li><a href="contact.html">Solar O&M</a></li>
+          <li><a href="residential.html#storage">Battery Storage</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Get in Touch</h4>
+        <ul class="footer-contact">
+          <li><span class="icon">📍</span>Tennessee Valley &amp; Southeast Region</li>
+          <li><span class="icon">📞</span><a href="tel:+18005556789" style="color:rgba(255,255,255,.6)">(800) 555-SOLAR</a></li>
+          <li><span class="icon">✉️</span><a href="mailto:info@lightwavesolar.com" style="color:rgba(255,255,255,.6)">info@lightwavesolar.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Lightwave Solar. All rights reserved.</span>
+      <span>Established 2006 · Tennessee Valley's Solar Experts</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+  // FAQ accordion
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lightwave Solar — ROI</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: #0a0f1e;
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 24px;
+  }
+
+  .slide {
+    width: 100%;
+    max-width: 620px;
+  }
+
+  .title {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #f59e0b;
+    margin-bottom: 8px;
+  }
+
+  .subtitle {
+    text-align: center;
+    font-size: 17px;
+    color: #475569;
+    margin-bottom: 48px;
+  }
+
+  .app-block {
+    margin-bottom: 40px;
+  }
+
+  .app-name {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #475569;
+    margin-bottom: 10px;
+  }
+
+  .col-headers {
+    display: grid;
+    grid-template-columns: 1fr 130px 180px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #1f2937;
+    margin-bottom: 2px;
+  }
+
+  .col-headers span {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #374151;
+    text-align: right;
+  }
+
+  .col-headers span:first-child { text-align: left; }
+
+  .cost-row {
+    display: grid;
+    grid-template-columns: 1fr 130px 180px;
+    align-items: baseline;
+    padding: 14px 0;
+    border-bottom: 1px solid #1f2937;
+  }
+
+  .cost-label {
+    font-size: 15px;
+    color: #94a3b8;
+  }
+
+  .per-user {
+    font-size: 14px;
+    font-weight: 500;
+    text-align: right;
+    color: #475569;
+  }
+
+  .cost-val {
+    font-size: 22px;
+    font-weight: 700;
+    text-align: right;
+  }
+
+  .cost-val.them { color: #f87171; }
+  .cost-val.us { color: #34d399; font-weight: 800; }
+  .cost-label.us { color: #fff; font-weight: 700; }
+
+  /* Savings total */
+  .savings-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 20px 0 0;
+  }
+
+  .savings-total .label {
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #475569;
+  }
+
+  .savings-total .amount {
+    font-size: 36px;
+    font-weight: 900;
+    color: #34d399;
+  }
+
+  .savings-total .amount span {
+    font-size: 15px;
+    font-weight: 500;
+    color: #475569;
+  }
+
+  /* Section divider */
+  .section-divider {
+    border: none;
+    border-top: 1px solid #1f2937;
+    margin: 44px 0;
+  }
+
+  /* Revenue block */
+  .revenue-block {
+    margin-bottom: 8px;
+  }
+
+  .revenue-header {
+    margin-bottom: 24px;
+  }
+
+  .revenue-header .app-name {
+    margin-bottom: 4px;
+  }
+
+  .revenue-header .tagline {
+    font-size: 13px;
+    color: #475569;
+  }
+
+  .revenue-col-headers {
+    display: grid;
+    grid-template-columns: 1fr 160px 160px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #1f2937;
+    margin-bottom: 2px;
+  }
+
+  .revenue-col-headers span {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #374151;
+    text-align: right;
+  }
+
+  .revenue-col-headers span:first-child { text-align: left; }
+
+  .revenue-row {
+    display: grid;
+    grid-template-columns: 1fr 160px 160px;
+    align-items: baseline;
+    padding: 14px 0;
+    border-bottom: 1px solid #1f2937;
+  }
+
+  .revenue-row .label { font-size: 15px; color: #94a3b8; }
+
+  .revenue-row .deals {
+    font-size: 14px;
+    font-weight: 500;
+    text-align: right;
+    color: #475569;
+  }
+
+  .revenue-row .revenue {
+    font-size: 22px;
+    font-weight: 700;
+    text-align: right;
+  }
+
+  .revenue-row.before .revenue { color: #94a3b8; }
+  .revenue-row.after .revenue { color: #f59e0b; }
+
+  .revenue-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 20px 0 0;
+  }
+
+  .revenue-total .label {
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #475569;
+  }
+
+  .revenue-total .amount {
+    font-size: 36px;
+    font-weight: 900;
+    color: #f59e0b;
+  }
+
+  .revenue-total .amount span {
+    font-size: 15px;
+    font-weight: 500;
+    color: #475569;
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    margin-top: 56px;
+    font-size: 11px;
+    color: #1f2937;
+    letter-spacing: 1px;
+  }
+</style>
+</head>
+<body>
+<div class="slide">
+
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:36px;">
+    <img src="../assets/images/lightwave-only-logo-4df5271b.png" alt="LightWave Solar" style="height:48px;object-fit:contain;">
+    <a href="index.html" style="font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:#475569;text-decoration:none;">← Back</a>
+  </div>
+
+  <div class="title">Software Analysis</div>
+  <div class="subtitle">Annual cost breakdown vs. off-the-shelf alternatives</div>
+
+  <!-- Phone System -->
+  <div class="app-block">
+    <div class="app-name">📞 Phone System</div>
+    <div class="col-headers">
+      <span></span>
+      <span>Per User / yr</span>
+      <span>Total (5 users) / yr</span>
+    </div>
+    <div class="cost-row">
+      <span class="cost-label">Aircall (off the shelf)</span>
+      <span class="per-user">$722</span>
+      <span class="cost-val them">$3,612</span>
+    </div>
+    <div class="cost-row">
+      <span class="cost-label us">Custom built</span>
+      <span class="per-user">$34</span>
+      <span class="cost-val us">$168</span>
+    </div>
+  </div>
+
+  <!-- Expense Reporting -->
+  <div class="app-block">
+    <div class="app-name">🧾 Expense Reporting</div>
+    <div class="col-headers">
+      <span></span>
+      <span>Per User / yr</span>
+      <span>Total (30 users) / yr</span>
+    </div>
+    <div class="cost-row">
+      <span class="cost-label">Fyle (off the shelf)</span>
+      <span class="per-user">$144</span>
+      <span class="cost-val them">$4,316</span>
+    </div>
+    <div class="cost-row">
+      <span class="cost-label us">Custom built</span>
+      <span class="per-user">$4</span>
+      <span class="cost-val us">$132</span>
+    </div>
+  </div>
+
+  <div class="savings-total">
+    <div class="label">Annual cost savings</div>
+    <div class="amount">$7,628 <span>/ yr</span></div>
+  </div>
+
+
+
+
+
+</div>
+</body>
+</html>

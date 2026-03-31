@@ -1,0 +1,192 @@
+/*
+    Colorbox Core Style:
+    The following CSS is consistent between example themes and should not be altered.
+*/
+#colorbox.droppics, #cboxOverlay.droppics, #colorbox.droppics #cboxWrapper{position:absolute; top:0; left:0; z-index:9999; overflow:visible;}
+#cboxOverlay.droppics {position:fixed; width:100%; height:100%;}
+#colorbox.droppics #cboxMiddleLeft, #colorbox.droppics #cboxBottomLeft{clear:left;}
+#colorbox.droppics #cboxContent{position:relative;}
+#colorbox.droppics #cboxLoadedContent{overflow:auto; -webkit-overflow-scrolling: touch;}
+#colorbox.droppics #cboxTitle{margin:0;}
+#colorbox.droppics #cboxLoadingOverlay, #colorbox.droppics #cboxLoadingGraphic{position:absolute; top:0; left:0; width:100%; height:100%;}
+#colorbox.droppics #cboxPrevious, #colorbox.droppics #cboxNext, #colorbox.droppics #cboxClose, #colorbox.droppics #cboxSlideshow{cursor:pointer;outline: none;}
+#colorbox.droppics .cboxPhoto{float:left; margin:auto; border:0; display:block; max-width:none; -ms-interpolation-mode:bicubic;}
+#colorbox.droppics .cboxIframe{width:100%; height:100%; display:block; border:0;}
+#colorbox.droppics, #colorbox.droppics #cboxContent, #colorbox.droppics #cboxLoadedContent{box-sizing:content-box; -moz-box-sizing:content-box; -webkit-box-sizing:content-box;}
+
+/*
+    User Style:
+    Change the following styles to modify the appearance of Colorbox.  They are
+    ordered & tabbed in a way that represents the nesting of the generated HTML.
+*/
+#cboxOverlay.droppics {background:#000;}
+#colorbox.droppics {outline:0;}
+#colorbox.droppics #cboxContent{margin-top:0px; overflow:visible; background: #fff ;webkit-border-radius: 4px;-moz-border-radius: 4px;-ms-border-radius: 4px;-o-border-radius: 4px;border-radius: 4px;}
+#colorbox.droppics .cboxIframe{background:#fff;}
+#colorbox.droppics         #cboxError{padding:50px; border:1px solid #ccc;}
+#colorbox.droppics         #cboxLoadedContent{margin: 0; border: 8px solid #FFF;webkit-border-radius: 4px;-moz-border-radius: 4px;-ms-border-radius: 4px;-o-border-radius: 4px;border-radius: 4px;background:#fff; padding:1px;}
+#colorbox.droppics         #cboxLoadingGraphic{background:url(../images/loading-119cc092.gif) no-repeat center center;}
+#colorbox.droppics         #cboxLoadingOverlay{background: transparent;webkit-border-radius: 4px;-moz-border-radius: 4px;-ms-border-radius: 4px;-o-border-radius: 4px;border-radius: 4px;}
+#colorbox.droppics #cboxTitle {
+    position:absolute; bottom:-35px; left:10px;
+    top: auto; left: auto;
+    border: none;
+    color:#cdcdcd;text-align:left;overflow: hidden;-o-text-overflow: ellipsis;text-overflow: ellipsis;white-space: nowrap;width: 90%;
+}
+#colorbox.droppics  #cboxCurrent{
+    position:absolute;
+    top:-22px; right:205px; text-indent:-9999px;
+    bottom: auto; right: auto;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    border: none;
+    background-color: transparent;
+}
+
+/* these elements are buttons, and may need to have additional styles reset to avoid unwanted base styles */
+/*#cboxPrevious, #cboxNext, #cboxSlideshow, #cboxClose {border:0; padding:0; margin:0; overflow:visible; text-indent:-9999px; width:20px; height:20px; position:absolute; top:-20px; background:url(../images/controls.png) no-repeat 0 0;}*/
+#colorbox.droppics #cboxPrevious, #colorbox.droppics #cboxNext, #colorbox.droppics #cboxSlideshow, #colorbox.droppics  #cboxClose {border:0; padding:0; margin:0; overflow:visible;}
+#colorbox.droppics #cboxCurrent, #colorbox.droppics #cboxPrevious, #colorbox.droppics #cboxNext, #colorbox.droppics #cboxSlideshow {
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+/* avoid outlines on :active (mouseclick), but preserve outlines on :focus (tabbed navigating) */
+#colorbox.droppics  #cboxPrevious:active, #colorbox.droppics #cboxNext:active, #colorbox.droppics #cboxSlideshow:active, #colorbox.droppics #cboxClose:active {outline:0;}
+
+#colorbox.droppics       #cboxPrevious{
+    position: absolute;
+    top: 0;
+    left: 5px;
+    bottom: auto;
+    right: auto;
+    background: url(../images/prev-82d7a564.png) no-repeat center left !important;
+    width: 100px;
+    height: 100%;
+    text-indent: -9999px;
+    opacity: 0.2;
+}
+#colorbox.droppics       #cboxPrevious:hover{opacity: 1;}
+#colorbox.droppics       #cboxNext{
+    position: absolute;
+    top: 0;
+    right: 5px;
+    bottom: auto;
+    left: auto;
+    background: url(../images/next-fbf0d6a2.png) no-repeat center right !important;
+    width: 100px;
+    height: 100%;
+    text-indent: -9999px;
+    opacity: 0.2;
+}
+#colorbox.droppics       #cboxNext:hover{opacity: 1;}
+#colorbox.droppics     #cboxClose{
+    position: absolute;
+    bottom: -40px;
+    right: 0;
+    top: auto; left: auto;
+    display: block;
+    background: url(../images/close-719256b3.png) no-repeat top center;
+    width: 27px;
+    height: 27px;
+    text-indent: -9999px;
+    border-width: 0px;
+}
+/*#cboxClose:hover{background-position:-50px -25px;}*/
+.cboxSlideshow_on #cboxPrevious, .cboxSlideshow_off #cboxPrevious{right:66px;}
+.cboxSlideshow_on #cboxSlideshow{background-position:-75px -25px; right:44px;}
+.cboxSlideshow_on #cboxSlideshow:hover{background-position:-100px -25px;}
+.cboxSlideshow_off #cboxSlideshow{background-position:-100px 0px; right:44px;}
+.cboxSlideshow_off #cboxSlideshow:hover{background-position:-75px -25px;}
+
+
+#colorbox.droppics .showcaption, .showcaption {
+    display: inline-block;
+    background: #FFF;
+    padding: 0;
+    padding-bottom: 20px;
+    position: relative;
+    z-index: 0;
+    text-decoration: none;
+    vertical-align: middle;
+    box-shadow: 1px 1px 12px #CCC;
+    -moz-box-shadow: 1px 1px 12px #CCC;
+    -webkit-box-shadow: 1px 1px 12px #CCC;
+}
+#colorbox.droppics .showcaption img, .droppicssingleimage.showcaption img {
+    margin-bottom: 5px;
+    text-align: center;
+    border-style: solid;
+}
+
+#colorbox.droppics .showcaption span, .showcaption span {
+    font-weight: bold;
+    font-size: 14px;
+    position: absolute;
+    display: inline-block;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 0 2px;
+    background-color: #fff;
+}
+
+#colorbox.droppics .droppicsvideo > a {
+
+}
+.droppicssinglevideo {
+    position: relative;
+}
+.droppicsvideo  i.video, .droppicssinglevideo  i.video {
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+    position: absolute;
+    right: 16px;
+    top: 0;
+    background: url("../images/play-93a0c6b0.png")
+}
+#colorbox.droppics .droppicsgallerymasonry .droppicsvideo i.video, .droppicsgallerypolaroid .droppicsvideo i.video{
+    right: 0px;
+}
+
+
+/* Droppics */
+.droppicssingleimage.showcaption {
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    max-width: 100%;
+}
+.droppicssingleimage.showcaption img, .droppicssingleimage img, .videoWrapper iframe  {
+    max-width: 100%;
+}
+.videoWrapper.droppicsEmbedVideo {
+    height: 0;
+    position: relative;
+}
+.videoWrapper.droppicsEmbedVideo iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+}
+@media only screen and (max-width: 600px) {
+    .droppicssingleimage.showcaption img {
+        margin: 0 !important;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .droppicssingleimage.showcaption {
+        padding-bottom: 0px !important;
+    }
+    .showcaption span {
+        position: relative !important;
+    }
+}

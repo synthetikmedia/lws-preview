@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us — Lightwave Solar</title>
+  <meta name="description" content="Get in touch with Lightwave Solar for a free consultation, site assessment, or commercial project inquiry. Serving Tennessee Valley since 2006." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .contact-page {
+      padding: 60px 0 100px;
+      background: var(--off-white);
+    }
+
+    /* Override form card background for visual separation */
+    .contact-form h3 {
+      color: var(--navy);
+      font-size: 1.4rem;
+      margin-bottom: 6px;
+    }
+
+    .contact-form > p {
+      color: var(--gray);
+      font-size: 0.92rem;
+      margin-bottom: 32px;
+    }
+
+    /* Styled select arrow */
+    .form-group select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236C757D' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      padding-right: 44px;
+      cursor: pointer;
+    }
+
+    .form-submit-wrap {
+      margin-top: 8px;
+    }
+
+    .form-submit-wrap .btn {
+      width: 100%;
+      justify-content: center;
+      font-size: 1rem;
+      padding: 16px 32px;
+    }
+
+    /* Office info sidebar */
+    .office-map {
+      background: linear-gradient(135deg, var(--navy), var(--navy-mid));
+      border-radius: var(--radius-lg);
+      aspect-ratio: 4/3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      margin-top: 36px;
+      border: 1px solid rgba(245,166,35,.12);
+    }
+
+    .office-map::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(245,166,35,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(245,166,35,.04) 1px, transparent 1px);
+      background-size: 30px 30px;
+    }
+
+    .map-pin {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    .map-pin .pin-icon {
+      font-size: 3rem;
+      display: block;
+      margin-bottom: 12px;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .map-pin p {
+      color: rgba(255,255,255,.7);
+      font-size: 0.85rem;
+      max-width: 200px;
+    }
+
+    .map-pin strong {
+      color: var(--gold);
+      display: block;
+      font-family: var(--font-head);
+      font-size: 1rem;
+      margin-bottom: 4px;
+    }
+
+    /* Quick contact cards */
+    .quick-contacts {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 32px;
+    }
+
+    .quick-card {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      border: 1px solid var(--gray-light);
+      text-align: center;
+      transition: all var(--transition);
+    }
+
+    .quick-card:hover {
+      border-color: var(--gold);
+      box-shadow: 0 4px 20px rgba(245,166,35,.12);
+      transform: translateY(-2px);
+    }
+
+    .quick-card .qc-icon { font-size: 1.6rem; margin-bottom: 8px; }
+    .quick-card .qc-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray); margin-bottom: 4px; }
+    .quick-card .qc-value { font-weight: 600; font-size: 0.88rem; color: var(--navy); }
+    .quick-card a { color: var(--navy); transition: color var(--transition); }
+    .quick-card a:hover { color: var(--gold); }
+
+    /* Service interest pills */
+    .interest-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .interest-pill {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border: 2px solid var(--gray-light);
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all var(--transition);
+      user-select: none;
+      background: var(--white);
+      color: var(--text);
+    }
+
+    .interest-pill input[type="checkbox"] { display: none; }
+
+    .interest-pill:hover {
+      border-color: var(--gold);
+      color: var(--navy);
+    }
+
+    .interest-pill.selected {
+      background: rgba(245,166,35,.1);
+      border-color: var(--gold);
+      color: var(--navy);
+    }
+
+    .interest-pill.selected::before {
+      content: '✓ ';
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    /* Thank-you state */
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 48px 32px;
+    }
+
+    .form-success.show { display: block; }
+
+    .success-icon {
+      width: 72px;
+      height: 72px;
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      margin: 0 auto 20px;
+    }
+
+    .form-success h3 {
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+
+    .form-success p { color: var(--gray); font-size: 0.95rem; }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="navbar-inner">
+    <a href="index.html" class="nav-logo">
+      <svg class="logo-icon" viewBox="0 0 36 36" fill="none">
+        <circle cx="18" cy="18" r="18" fill="rgba(245,166,35,0.15)"/>
+        <circle cx="18" cy="18" r="7" fill="#F5A623"/>
+        <line x1="18" y1="2" x2="18" y2="8" stroke="#F5A623" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="18" y1="28" x2="18" y2="34" stroke="#F5A623" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="2" y1="18" x2="8" y2="18" stroke="#F5A623" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="28" y1="18" x2="34" y2="18" stroke="#F5A623" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="6.1" y1="6.1" x2="10.3" y2="10.3" stroke="#F5A623" stroke-width="2" stroke-linecap="round"/>
+        <line x1="25.7" y1="25.7" x2="29.9" y2="29.9" stroke="#F5A623" stroke-width="2" stroke-linecap="round"/>
+        <line x1="29.9" y1="6.1" x2="25.7" y2="10.3" stroke="#F5A623" stroke-width="2" stroke-linecap="round"/>
+        <line x1="10.3" y1="25.7" x2="6.1" y2="29.9" stroke="#F5A623" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      Lightwave<span class="accent"> Solar</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="residential.html">Residential</a></li>
+      <li><a href="commercial.html">Commercial</a></li>
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="contact.html" class="btn btn-primary nav-cta">Get a Free Quote</a></li>
+    </ul>
+    <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-nav">
+  <a href="index.html">Home</a>
+  <a href="residential.html">Residential Solar</a>
+  <a href="commercial.html">Commercial Solar</a>
+  <a href="index.html#services">All Services</a>
+  <a href="contact.html">Contact Us</a>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero" style="padding-bottom: 60px;">
+  <div class="container page-hero-content">
+    <span class="section-label reveal">Contact Us</span>
+    <h1 class="reveal reveal-delay-1">Let's Talk Solar</h1>
+    <p class="reveal reveal-delay-2">Ready to get started, have questions, or want a commercial quote? Reach out — we respond fast, and there's never any pressure.</p>
+  </div>
+</section>
+
+<!-- CONTACT BODY -->
+<section class="contact-page">
+  <div class="container">
+    <div class="contact-grid">
+
+      <!-- Left: Contact Info -->
+      <div class="reveal-left">
+        <h3>We're Here for You</h3>
+        <p>Whether you're exploring residential solar for the first time or developing a utility-scale project, our team is ready to help. No scripts, no runaround — just real answers from experienced professionals.</p>
+
+        <div class="contact-detail">
+          <div class="contact-detail-icon">📞</div>
+          <div class="contact-detail-text">
+            <strong>Phone</strong>
+            <span><a href="tel:+18005556789" style="color:var(--gray)">(800) 555-SOLAR</a></span>
+          </div>
+        </div>
+
+        <div class="contact-detail">
+          <div class="contact-detail-icon">✉️</div>
+          <div class="contact-detail-text">
+            <strong>Email</strong>
+            <span><a href="mailto:info@lightwavesolar.com" style="color:var(--gray)">info@lightwavesolar.com</a></span>
+          </div>
+        </div>
+
+        <div class="contact-detail">
+          <div class="contact-detail-icon">🕐</div>
+          <div class="contact-detail-text">
+            <strong>Business Hours</strong>
+            <span>Monday – Friday, 8:00 AM – 5:00 PM CT</span>
+          </div>
+        </div>
+
+        <div class="contact-detail">
+          <div class="contact-detail-icon">📍</div>
+          <div class="contact-detail-text">
+            <strong>Service Area</strong>
+            <span>Tennessee Valley &amp; Southeast United States</span>
+          </div>
+        </div>
+
+        <div class="office-map">
+          <div class="map-pin">
+            <span class="pin-icon">📍</span>
+            <strong>Tennessee Valley</strong>
+            <p>Proudly serving the Southeast since 2006</p>
+          </div>
+        </div>
+
+        <div class="quick-contacts" style="margin-top: 24px;">
+          <div class="quick-card">
+            <div class="qc-icon">🏠</div>
+            <div class="qc-label">Residential</div>
+            <div class="qc-value"><a href="residential.html">Learn More →</a></div>
+          </div>
+          <div class="quick-card">
+            <div class="qc-icon">🏢</div>
+            <div class="qc-label">Commercial</div>
+            <div class="qc-value"><a href="commercial.html">Learn More →</a></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Form -->
+      <div class="reveal-right">
+        <div class="contact-form">
+          <h3>Get Your Free Assessment</h3>
+          <p>Fill out the form below and we'll get back to you within one business day — usually faster.</p>
+
+          <!-- Service Interest Selector -->
+          <div class="form-group">
+            <label>I'm interested in: <span style="font-weight:400;color:var(--gray)">(select all that apply)</span></label>
+            <div class="interest-pills">
+              <label class="interest-pill">
+                <input type="checkbox" name="interest" value="residential"> 🏠 Residential Solar
+              </label>
+              <label class="interest-pill">
+                <input type="checkbox" name="interest" value="commercial"> 🏢 Commercial Solar
+              </label>
+              <label class="interest-pill">
+                <input type="checkbox" name="interest" value="utility"> ⚡ Utility-Scale
+              </label>
+              <label class="interest-pill">
+                <input type="checkbox" name="interest" value="battery"> 🔋 Battery Storage
+              </label>
+              <label class="interest-pill">
+                <input type="checkbox" name="interest" value="om"> 🔧 O&amp;M Services
+              </label>
+            </div>
+          </div>
+
+          <form id="contact-form" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="first-name">First Name *</label>
+                <input type="text" id="first-name" name="first_name" placeholder="Jane" required />
+              </div>
+              <div class="form-group">
+                <label for="last-name">Last Name *</label>
+                <input type="text" id="last-name" name="last_name" placeholder="Smith" required />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" name="email" placeholder="jane@example.com" required />
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="property-type">Property Type</label>
+              <select id="property-type" name="property_type">
+                <option value="">Select one…</option>
+                <option value="residential-own">Residential — I own the property</option>
+                <option value="residential-rent">Residential — I rent</option>
+                <option value="commercial-small">Commercial — Small business (under 50 kW)</option>
+                <option value="commercial-mid">Commercial — Mid-size (50–500 kW)</option>
+                <option value="commercial-large">Commercial — Large / utility-scale (500 kW+)</option>
+                <option value="om">Existing system — need O&amp;M support</option>
+              </select>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="city">City / Town</label>
+                <input type="text" id="city" name="city" placeholder="Huntsville" />
+              </div>
+              <div class="form-group">
+                <label for="state">State</label>
+                <select id="state" name="state">
+                  <option value="">Select…</option>
+                  <option value="TN" selected>Tennessee</option>
+                  <option value="AL">Alabama</option>
+                  <option value="GA">Georgia</option>
+                  <option value="MS">Mississippi</option>
+                  <option value="KY">Kentucky</option>
+                  <option value="NC">North Carolina</option>
+                  <option value="SC">South Carolina</option>
+                  <option value="VA">Virginia</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="monthly-bill">Approximate Monthly Electric Bill</label>
+              <select id="monthly-bill" name="monthly_bill">
+                <option value="">Select range…</option>
+                <option value="under-100">Under $100</option>
+                <option value="100-200">$100 – $200</option>
+                <option value="200-350">$200 – $350</option>
+                <option value="350-500">$350 – $500</option>
+                <option value="500-1000">$500 – $1,000</option>
+                <option value="over-1000">Over $1,000</option>
+                <option value="commercial">Commercial account</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Anything else we should know?</label>
+              <textarea id="message" name="message" placeholder="Tell us about your situation, goals, or any questions you have…"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="how-heard">How did you hear about us?</label>
+              <select id="how-heard" name="how_heard">
+                <option value="">Select…</option>
+                <option value="google">Google Search</option>
+                <option value="referral">Friend or Family Referral</option>
+                <option value="neighbor">Saw a neighbor's install</option>
+                <option value="social">Social Media</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-submit-wrap">
+              <button type="submit" class="btn btn-primary btn-lg">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+                Send My Request
+              </button>
+            </div>
+
+            <p class="form-note">🔒 We respect your privacy. Your info is never sold or shared. We'll only contact you about your solar inquiry.</p>
+          </form>
+
+          <div class="form-success" id="form-success">
+            <div class="success-icon">✓</div>
+            <h3>Message Received!</h3>
+            <p>Thanks for reaching out. A member of the Lightwave Solar team will be in touch within one business day — often much sooner. We look forward to talking solar with you!</p>
+            <a href="index.html" class="btn btn-primary" style="margin-top: 24px; justify-content: center;">Back to Home</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST STRIP -->
+<div class="stats-bar" style="background: var(--navy);">
+  <div class="container">
+    <div class="stats-bar-grid">
+      <div class="stats-bar-item reveal">
+        <div class="num" style="color:var(--gold);">Free</div>
+        <div class="lbl" style="color:rgba(255,255,255,.5);">No-Obligation Assessment</div>
+      </div>
+      <div class="stats-bar-item reveal reveal-delay-1">
+        <div class="num" style="color:var(--gold);">Fast</div>
+        <div class="lbl" style="color:rgba(255,255,255,.5);">Same-Day Response Goal</div>
+      </div>
+      <div class="stats-bar-item reveal reveal-delay-2">
+        <div class="num" style="color:var(--gold);">Local</div>
+        <div class="lbl" style="color:rgba(255,255,255,.5);">Tennessee Valley Based</div>
+      </div>
+      <div class="stats-bar-item reveal reveal-delay-3">
+        <div class="num" style="color:var(--gold);">20+yr</div>
+        <div class="lbl" style="color:rgba(255,255,255,.5);">Industry Experience</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <svg width="28" height="28" viewBox="0 0 36 36" fill="none">
+            <circle cx="18" cy="18" r="7" fill="#F5A623"/>
+            <line x1="18" y1="2" x2="18" y2="8" stroke="#F5A623" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="18" y1="28" x2="18" y2="34" stroke="#F5A623" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="2" y1="18" x2="8" y2="18" stroke="#F5A623" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="28" y1="18" x2="34" y2="18" stroke="#F5A623" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+          Lightwave<span class="accent"> Solar</span>
+        </div>
+        <p>Tennessee Valley's trusted source for turnkey solar solutions since 2006. Experience. Quality. Passion.</p>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul class="footer-links">
+          <li><a href="residential.html">Residential Solar</a></li>
+          <li><a href="commercial.html">Commercial Solar</a></li>
+          <li><a href="contact.html">Utility-Scale Solar</a></li>
+          <li><a href="contact.html">Solar O&M</a></li>
+          <li><a href="residential.html#storage">Battery Storage</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Get in Touch</h4>
+        <ul class="footer-contact">
+          <li><span class="icon">📍</span>Tennessee Valley &amp; Southeast Region</li>
+          <li><span class="icon">📞</span><a href="tel:+18005556789" style="color:rgba(255,255,255,.6)">(800) 555-SOLAR</a></li>
+          <li><span class="icon">✉️</span><a href="mailto:info@lightwavesolar.com" style="color:rgba(255,255,255,.6)">info@lightwavesolar.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Lightwave Solar. All rights reserved.</span>
+      <span>Established 2006 · Tennessee Valley's Solar Experts</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+  // Interest pills toggle
+  document.querySelectorAll('.interest-pill').forEach(pill => {
+    pill.addEventListener('click', () => {
+      pill.classList.toggle('selected');
+    });
+  });
+
+  // Enhanced form submission with success state
+  const form = document.getElementById('contact-form');
+  const successState = document.getElementById('form-success');
+
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const btn = form.querySelector('button[type="submit"]');
+      const originalHTML = btn.innerHTML;
+      btn.innerHTML = '<span style="display:inline-block;animation:spin .8s linear infinite">⟳</span> Sending…';
+      btn.disabled = true;
+
+      setTimeout(() => {
+        form.style.display = 'none';
+        successState.classList.add('show');
+      }, 1400);
+    });
+  }
+
+  // Spin animation
+  const style = document.createElement('style');
+  style.textContent = '@keyframes spin { to { transform: rotate(360deg); } }';
+  document.head.appendChild(style);
+</script>
+</body>
+</html>

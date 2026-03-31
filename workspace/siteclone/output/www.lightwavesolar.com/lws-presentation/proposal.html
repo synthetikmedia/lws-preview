@@ -1,0 +1,483 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LightWave Solar — Website Upgrade Proposal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #f9a01b;
+      --gold-light: #ffc14d;
+      --gold-dim: rgba(249, 160, 27, 0.15);
+      --dark: #2a2a2e;
+      --dark-mid: #353539;
+      --dark-border: rgba(255,255,255,0.08);
+      --light: #ffffff;
+      --light-bg: #f8f8f6;
+      --light-border: #e8e4de;
+      --text-muted: #999;
+      --after-text: #1a1a1a;
+      --after-sub: #555;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #f0ede8;
+      color: var(--after-text);
+      min-height: 100vh;
+      padding: 40px 20px 60px;
+    }
+
+    .wrapper {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    /* ── HEADER ── */
+    .header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .logo-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .logo-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--gold);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-icon svg { display: block; }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--dark);
+      letter-spacing: -0.3px;
+    }
+
+    .logo-text span { color: var(--gold); }
+
+    .headline {
+      font-size: clamp(28px, 5vw, 46px);
+      font-weight: 900;
+      line-height: 1.15;
+      letter-spacing: -1px;
+      color: var(--dark);
+      margin-bottom: 16px;
+    }
+
+    .headline em {
+      font-style: normal;
+      color: var(--gold);
+    }
+
+    .subheadline {
+      font-size: 17px;
+      color: #666;
+      max-width: 560px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* ── COLUMNS ── */
+    .columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.15);
+    }
+
+    /* BEFORE */
+    .col-before {
+      background: var(--dark);
+      padding: 36px 36px 40px;
+    }
+
+    .col-after {
+      background: var(--light);
+      padding: 36px 36px 40px;
+    }
+
+    .col-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border-radius: 100px;
+      padding: 6px 14px;
+      margin-bottom: 28px;
+    }
+
+    .col-before .col-label {
+      background: rgba(255,255,255,0.07);
+      color: var(--text-muted);
+      border: 1px solid var(--dark-border);
+    }
+
+    .col-after .col-label {
+      background: var(--gold-dim);
+      color: var(--gold);
+      border: 1px solid rgba(249,160,27,0.3);
+    }
+
+    .col-label .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+    }
+
+    .col-before .dot { background: #555; }
+    .col-after .dot  { background: var(--gold); }
+
+    .col-title {
+      font-size: 42px;
+      font-weight: 900;
+      margin-bottom: 24px;
+      letter-spacing: -1px;
+    }
+
+    .col-before .col-title { color: #fff; }
+    .col-after  .col-title { color: var(--after-text); }
+
+    /* Items */
+    .item {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .item:last-child { margin-bottom: 0; }
+
+    .item-icon {
+      flex-shrink: 0;
+      width: 26px;
+      height: 26px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      margin-top: 0;
+    }
+
+    .col-before .item-icon {
+      background: rgba(255,255,255,0.06);
+    }
+
+    .col-after .item-icon {
+      background: var(--gold-dim);
+    }
+
+    .item-body {}
+
+    .item-title {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 3px;
+      line-height: 1.3;
+    }
+
+    .col-before .item-title { color: #ccc; }
+    .col-after  .item-title { color: var(--after-text); }
+
+    .item-desc {
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .col-before .item-desc { color: #888; }
+    .col-after  .item-desc { color: var(--after-sub); }
+
+    /* ── STAT STRIP ── */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-top: 2px;
+      border-radius: 0 0 20px 20px;
+      overflow: hidden;
+    }
+
+    .stat {
+      background: var(--dark);
+      padding: 22px 20px;
+      text-align: center;
+    }
+
+    .stat-num {
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--gold);
+      letter-spacing: -1px;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: #777;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* ── NEW PAGES CALLOUT ── */
+    .callout {
+      background: linear-gradient(135deg, var(--dark) 0%, #1e1e22 100%);
+      border-radius: 16px;
+      padding: 28px 32px;
+      margin-top: 20px;
+      border: 1px solid var(--dark-border);
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    .callout-icon {
+      font-size: 28px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .callout-body {}
+
+    .callout-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+
+    .callout-desc {
+      font-size: 13px;
+      color: #888;
+      line-height: 1.6;
+    }
+
+    .city-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .city-tag {
+      background: rgba(249,160,27,0.12);
+      border: 1px solid rgba(249,160,27,0.25);
+      color: var(--gold-light);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 100px;
+    }
+
+    /* ── CTA ── */
+    .cta-section {
+      text-align: center;
+      margin-top: 48px;
+      padding: 0 20px;
+    }
+
+    .cta-eyebrow {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+
+    .cta-heading {
+      font-size: clamp(22px, 4vw, 34px);
+      font-weight: 900;
+      letter-spacing: -0.8px;
+      color: var(--dark);
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+
+    .cta-sub {
+      font-size: 15px;
+      color: #888;
+      margin-bottom: 28px;
+      line-height: 1.6;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background: var(--gold);
+      color: #fff;
+      font-family: inherit;
+      font-size: 16px;
+      font-weight: 700;
+      padding: 16px 40px;
+      border-radius: 100px;
+      text-decoration: none;
+      letter-spacing: -0.2px;
+      box-shadow: 0 6px 24px rgba(249,160,27,0.4);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 32px rgba(249,160,27,0.5);
+    }
+
+    .footer-note {
+      margin-top: 20px;
+      font-size: 13px;
+      color: #aaa;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 680px) {
+      body { padding: 24px 16px 48px; }
+
+      .columns {
+        grid-template-columns: 1fr;
+        border-radius: 16px;
+      }
+
+      .col-before { border-radius: 16px 16px 0 0; padding: 28px 24px 32px; }
+      .col-after  { border-radius: 0; padding: 28px 24px 32px; }
+
+      .stats { grid-template-columns: repeat(3, 1fr); border-radius: 0 0 16px 16px; }
+      .stat { padding: 18px 12px; }
+      .stat-num { font-size: 22px; }
+
+      .callout { flex-direction: column; gap: 12px; padding: 22px 20px; }
+
+      .cta-btn { padding: 14px 30px; font-size: 15px; }
+    }
+  .nav-arrows {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 50%;
+  width: 1060px;
+  margin-left: -530px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  pointer-events: none;
+  z-index: 100;
+}
+.nav-arrow {
+  pointer-events: all;
+  background: rgba(249, 160, 27, 0.9);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  font-size: 22px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: background 0.15s, transform 0.15s;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  flex-shrink: 0;
+}
+.nav-arrow:hover {
+  background: #f9a01b;
+  transform: scale(1.1);
+}
+.nav-arrow.hidden {
+  visibility: hidden;
+  pointer-events: none;
+}</style>
+</head>
+<body>
+  <div class="wrapper">
+
+    <!-- HEADER -->
+    <header class="header">
+      <div class="logo-row">
+        <img src="../assets/images/lightwave-only-logo-4df5271b.png" alt="LightWave Solar" style="height:56px;object-fit:contain;">
+      </div>
+
+      <h1 class="headline">Your website is holding you back.<br><em>We fixed that.</em></h1>
+    </header>
+
+    <!-- BEFORE / AFTER COLUMNS -->
+    <div class="columns">
+
+      <!-- BEFORE -->
+      <div class="col-before">
+        <div class="col-label"><span class="dot"></span> Current Site</div>
+        <div class="col-title">Before</div>
+
+        <div class="item">
+          <div class="item-body">
+            <div class="item-title">• SLOW</div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item-body">
+            <div class="item-title">• ChatGPT is confused</div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item-body">
+            <div class="item-title">• No Localization</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AFTER -->
+      <div class="col-after">
+        <div class="col-label"><span class="dot"></span> Upgraded Site</div>
+        <div class="col-title">After</div>
+
+        <div class="item">
+          <div class="item-body">
+            <div class="item-title">• FAST</div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item-body">
+            <div class="item-title">• ChatGPT Recommends LWS</div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item-body">
+            <div class="item-title">• Custom City Pages</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
+<div class="nav-arrows">
+  <a class="nav-arrow" href="leads.html">&#8249;</a>
+  <a class="nav-arrow hidden" href="#">&#8250;</a>
+</div>
+</body>
+</html>

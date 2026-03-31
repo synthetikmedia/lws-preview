@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Commercial Solar — Lightwave Solar</title>
+  <meta name="description" content="Commercial and utility-scale solar solutions for businesses and developers in Tennessee Valley. Turnkey from design through O&M by Lightwave Solar." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .sector-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .sector-card {
+      background: linear-gradient(135deg, var(--navy-mid), var(--navy));
+      border-radius: var(--radius-lg);
+      padding: 40px 32px;
+      border: 1px solid rgba(245,166,35,.12);
+      transition: all var(--transition);
+    }
+
+    .sector-card:hover {
+      border-color: rgba(245,166,35,.35);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 50px rgba(0,0,0,.3);
+    }
+
+    .sector-number {
+      font-family: var(--font-head);
+      font-size: 3rem;
+      font-weight: 800;
+      color: rgba(245,166,35,.2);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .sector-card h3 {
+      color: var(--white);
+      margin-bottom: 12px;
+      font-size: 1.25rem;
+    }
+
+    .sector-card p {
+      color: rgba(255,255,255,.6);
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    .sector-card ul {
+      margin-top: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .sector-card ul li {
+      color: rgba(255,255,255,.55);
+      font-size: 0.85rem;
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+    }
+
+    .sector-card ul li::before {
+      content: '→';
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+
+    /* OM Section */
+    .om-section {
+      background: var(--off-white);
+    }
+
+    .om-features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .om-card {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: 32px 28px;
+      border: 1px solid var(--gray-light);
+      transition: all var(--transition);
+    }
+
+    .om-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-4px);
+    }
+
+    .om-card .icon {
+      font-size: 2rem;
+      margin-bottom: 14px;
+    }
+
+    .om-card h4 {
+      color: var(--navy);
+      font-size: 1.05rem;
+      margin-bottom: 8px;
+    }
+
+    .om-card p {
+      color: var(--gray);
+      font-size: 0.88rem;
+      line-height: 1.65;
+    }
+
+    /* ROI Section */
+    .roi-section {
+      background: linear-gradient(135deg, var(--navy), var(--navy-mid));
+      padding: 100px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .roi-section::before {
+      content: '';
+      position: absolute;
+      right: -10%;
+      top: -20%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(245,166,35,.07) 0%, transparent 65%);
+      border-radius: 50%;
+    }
+
+    .roi-table {
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-top: 48px;
+    }
+
+    .roi-row {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      padding: 20px 32px;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      align-items: center;
+      transition: background var(--transition);
+    }
+
+    .roi-row:last-child { border-bottom: none; }
+
+    .roi-row:hover { background: rgba(245,166,35,.05); }
+
+    .roi-row.header {
+      background: rgba(245,166,35,.08);
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--gold);
+    }
+
+    .roi-row span {
+      color: rgba(255,255,255,.75);
+      font-size: 0.93rem;
+    }
+
+    .roi-row .label {
+      color: var(--white);
+      font-weight: 500;
+    }
+
+    .roi-row .highlight {
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      .roi-table { overflow-x: auto; }
+      .roi-row { grid-template-columns: 1.5fr 1fr 1fr 1fr; min-width: 580px; padding: 16px 20px; }
+    }
+
+    /* Partner logos placeholder */
+    .trust-bar {
+      padding: 48px 0;
+      border-top: 1px solid var(--gray-light);
+      border-bottom: 1px solid var(--gray-light);
+    }
+
+    .trust-bar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+
+    .trust-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .trust-item .t-icon { font-size: 1.6rem; }
+    .trust-item .t-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="navbar-inner">
+    <a href="index.html" class="nav-logo">
+      <svg class="logo-icon" viewBox="0 0 36 36" fill="none">
+        <circle cx="18" cy="18" r="18" fill="rgba(245,166,35,0.15)"/>
+        <circle cx="18" cy="18" r="7" fill="#F5A623"/>
+        <line x1="18" y1="2" x2="18" y2="8" stroke="#F5A623" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="18" y1="28" x2="18" y2="34" stroke="#F5A623" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="2" y1="18" x2="8" y2="18" stroke="#F5A623" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="28" y1="18" x2="34" y2="18" stroke="#F5A623" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="6.1" y1="6.1" x2="10.3" y2="10.3" stroke="#F5A623" stroke-width="2" stroke-linecap="round"/>
+        <line x1="25.7" y1="25.7" x2="29.9" y2="29.9" stroke="#F5A623" stroke-width="2" stroke-linecap="round"/>
+        <line x1="29.9" y1="6.1" x2="25.7" y2="10.3" stroke="#F5A623" stroke-width="2" stroke-linecap="round"/>
+        <line x1="10.3" y1="25.7" x2="6.1" y2="29.9" stroke="#F5A623" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      Lightwave<span class="accent"> Solar</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="residential.html">Residential</a></li>
+      <li><a href="commercial.html">Commercial</a></li>
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="contact.html" class="btn btn-primary nav-cta">Get a Free Quote</a></li>
+    </ul>
+    <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-nav">
+  <a href="index.html">Home</a>
+  <a href="residential.html">Residential Solar</a>
+  <a href="commercial.html">Commercial Solar</a>
+  <a href="index.html#services">All Services</a>
+  <a href="contact.html">Contact Us</a>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="container page-hero-content">
+    <span class="section-label reveal">Commercial &amp; Utility Solar</span>
+    <h1 class="reveal reveal-delay-1">Solar Solutions Built<br>for Business</h1>
+    <p class="reveal reveal-delay-2">From warehouse rooftops to multi-megawatt ground mounts — Lightwave Solar engineers, installs, and maintains commercial and utility-scale solar systems that perform.</p>
+    <div style="margin-top: 32px; display: flex; gap: 16px; flex-wrap: wrap;" class="reveal reveal-delay-3">
+      <a href="contact.html" class="btn btn-primary btn-lg">Request a Commercial Assessment</a>
+      <a href="#sectors" class="btn btn-outline">Explore Sectors</a>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar reveal">
+  <div class="container">
+    <div class="trust-bar-inner">
+      <div class="trust-item">
+        <span class="t-icon">🏭</span>
+        <span class="t-label">Industrial</span>
+      </div>
+      <div class="trust-item">
+        <span class="t-icon">🏢</span>
+        <span class="t-label">Office &amp; Retail</span>
+      </div>
+      <div class="trust-item">
+        <span class="t-icon">🏥</span>
+        <span class="t-label">Healthcare</span>
+      </div>
+      <div class="trust-item">
+        <span class="t-icon">🏫</span>
+        <span class="t-label">Education</span>
+      </div>
+      <div class="trust-item">
+        <span class="t-icon">🌾</span>
+        <span class="t-label">Agriculture</span>
+      </div>
+      <div class="trust-item">
+        <span class="t-icon">⚡</span>
+        <span class="t-label">Utility-Scale</span>
+      </div>
+      <div class="trust-item">
+        <span class="t-icon">🔧</span>
+        <span class="t-label">O&amp;M Services</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTORS -->
+<section class="why-us section-pad" id="sectors">
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="section-label">Industry Sectors</span>
+      <h2 class="section-title light">Commercial Solar Across Every Sector</h2>
+      <p class="section-subtitle light">Two decades of experience across diverse commercial verticals means we understand your specific operational challenges and financial goals.</p>
+    </div>
+
+    <div class="sector-cards" style="margin-top: 48px;">
+      <div class="sector-card reveal reveal-delay-1">
+        <div class="sector-number">01</div>
+        <h3>Small &amp; Mid-Size Business</h3>
+        <p>Turn your roof into a revenue-generating asset. Lock in predictable energy costs and free up capital that was going to your utility.</p>
+        <ul>
+          <li>Retail &amp; restaurant</li>
+          <li>Office buildings</li>
+          <li>Light industrial &amp; warehousing</li>
+          <li>Self-storage facilities</li>
+        </ul>
+      </div>
+
+      <div class="sector-card reveal reveal-delay-2">
+        <div class="sector-number">02</div>
+        <h3>Large Commercial &amp; Institutional</h3>
+        <p>High energy loads mean high savings potential. We design systems sized to make a real dent in your largest operating expense.</p>
+        <ul>
+          <li>Healthcare &amp; medical campuses</li>
+          <li>Educational institutions</li>
+          <li>Distribution centers</li>
+          <li>Municipal &amp; government facilities</li>
+        </ul>
+      </div>
+
+      <div class="sector-card reveal reveal-delay-3">
+        <div class="sector-number">03</div>
+        <h3>Utility-Scale Development</h3>
+        <p>Multi-megawatt ground-mount projects engineered for grid interconnection, long-term performance, and investor-grade documentation.</p>
+        <ul>
+          <li>Ground-mount solar farms</li>
+          <li>Community solar arrays</li>
+          <li>Agricultural / agrivoltaic</li>
+          <li>Energy storage integration</li>
+        </ul>
+      </div>
+
+      <div class="sector-card reveal reveal-delay-4">
+        <div class="sector-number">04</div>
+        <h3>Solar O&amp;M Services</h3>
+        <p>Already have a solar system? We provide full-scope operations and maintenance for commercial arrays — regardless of who installed them.</p>
+        <ul>
+          <li>Performance monitoring &amp; reporting</li>
+          <li>Preventive &amp; corrective maintenance</li>
+          <li>Inverter &amp; equipment service</li>
+          <li>Vegetation management</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROI SECTION -->
+<section class="roi-section">
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="section-label">The Business Case</span>
+      <h2 class="section-title light">Commercial Solar ROI at a Glance</h2>
+      <p class="section-subtitle light">The financial case for commercial solar is compelling — and it only gets stronger as utility rates keep rising.</p>
+    </div>
+
+    <div class="roi-table reveal">
+      <div class="roi-row header">
+        <span>System Size</span>
+        <span>Est. Annual Savings</span>
+        <span>Payback Period</span>
+        <span>25-yr Net Benefit</span>
+      </div>
+      <div class="roi-row">
+        <span class="label">50 kW (Small Business)</span>
+        <span>~$8,000</span>
+        <span class="highlight">5–7 yrs</span>
+        <span class="highlight">$140,000+</span>
+      </div>
+      <div class="roi-row">
+        <span class="label">250 kW (Mid Commercial)</span>
+        <span>~$40,000</span>
+        <span class="highlight">4–6 yrs</span>
+        <span class="highlight">$700,000+</span>
+      </div>
+      <div class="roi-row">
+        <span class="label">500 kW (Large Commercial)</span>
+        <span>~$80,000</span>
+        <span class="highlight">4–6 yrs</span>
+        <span class="highlight">$1.4M+</span>
+      </div>
+      <div class="roi-row">
+        <span class="label">1 MW+ (Utility-Scale)</span>
+        <span>Custom Analysis</span>
+        <span class="highlight">Investor Grade</span>
+        <span class="highlight">Contact Us</span>
+      </div>
+    </div>
+
+    <p style="color:rgba(255,255,255,.4); font-size:0.78rem; text-align:center; margin-top:16px;">* Estimates based on average Tennessee Valley utility rates. Actual results vary. Tax incentives not included in payback estimate.</p>
+  </div>
+</section>
+
+<!-- WHAT WE DELIVER -->
+<section class="feature-section">
+  <div class="container">
+    <div class="feature-split">
+      <div class="reveal-left">
+        <span class="section-label">Our Commitment</span>
+        <h2 class="section-title">Full Turnkey from<br>Day One to Year 25</h2>
+        <p>We don't hand you a system and disappear. Lightwave Solar is your single point of accountability for the entire life of your project — from initial feasibility through decades of operation.</p>
+
+        <div class="checklist" style="margin-top: 28px;">
+          <div class="check-item">
+            <div class="check-icon">✓</div>
+            <p><strong>Feasibility &amp; site analysis</strong> — irradiance studies, shading analysis, structural review, utility interconnection research.</p>
+          </div>
+          <div class="check-item">
+            <div class="check-icon">✓</div>
+            <p><strong>Engineering &amp; permitting</strong> — stamped electrical and structural drawings, AHJ submittals, utility interconnection applications.</p>
+          </div>
+          <div class="check-item">
+            <div class="check-icon">✓</div>
+            <p><strong>Professional installation</strong> — NABCEP-certified team, commercial-grade equipment, project management from mobilization to PTO.</p>
+          </div>
+          <div class="check-item">
+            <div class="check-icon">✓</div>
+            <p><strong>Commissioning &amp; monitoring</strong> — system verification, data logger setup, and ongoing performance dashboards.</p>
+          </div>
+          <div class="check-item">
+            <div class="check-icon">✓</div>
+            <p><strong>Long-term O&amp;M</strong> — scheduled preventive maintenance, rapid response to alerts, annual performance reviews.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal-right">
+        <div class="solar-panel-graphic">
+          <div class="glow-circle"></div>
+          <svg width="140" height="120" viewBox="0 0 140 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="position:relative;z-index:1;">
+            <!-- Large commercial array -->
+            <rect x="5" y="30" width="130" height="50" rx="4" fill="none" stroke="#F5A623" stroke-width="1.5"/>
+            <!-- Horizontal dividers -->
+            <line x1="5" y1="47" x2="135" y2="47" stroke="#F5A623" stroke-width="1" opacity="0.4"/>
+            <line x1="5" y1="63" x2="135" y2="63" stroke="#F5A623" stroke-width="1" opacity="0.4"/>
+            <!-- Vertical dividers -->
+            <line x1="31" y1="30" x2="31" y2="80" stroke="#F5A623" stroke-width="1" opacity="0.4"/>
+            <line x1="57" y1="30" x2="57" y2="80" stroke="#F5A623" stroke-width="1" opacity="0.4"/>
+            <line x1="83" y1="30" x2="83" y2="80" stroke="#F5A623" stroke-width="1" opacity="0.4"/>
+            <line x1="109" y1="30" x2="109" y2="80" stroke="#F5A623" stroke-width="1" opacity="0.4"/>
+            <!-- Building outline below -->
+            <rect x="45" y="82" width="50" height="16" rx="2" fill="none" stroke="#F5A623" stroke-width="1.2" opacity="0.5"/>
+            <rect x="60" y="86" width="8" height="12" fill="none" stroke="#F5A623" stroke-width="1" opacity="0.4"/>
+            <rect x="72" y="86" width="8" height="12" fill="none" stroke="#F5A623" stroke-width="1" opacity="0.4"/>
+            <!-- Sun with rays -->
+            <circle cx="70" cy="14" r="8" fill="#F5A623"/>
+            <line x1="70" y1="2" x2="70" y2="5" stroke="#F5A623" stroke-width="2" stroke-linecap="round"/>
+            <line x1="81" y1="5" x2="79" y2="7" stroke="#F5A623" stroke-width="2" stroke-linecap="round"/>
+            <line x1="84" y1="14" x2="81" y2="14" stroke="#F5A623" stroke-width="2" stroke-linecap="round"/>
+            <line x1="59" y1="5" x2="61" y2="7" stroke="#F5A623" stroke-width="2" stroke-linecap="round"/>
+            <line x1="56" y1="14" x2="59" y2="14" stroke="#F5A623" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- O&M DEEP DIVE -->
+<section class="om-section section-pad">
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="section-label">Operations &amp; Maintenance</span>
+      <h2 class="section-title">Keep Your System at Peak Performance</h2>
+      <p class="section-subtitle">A solar system without proper O&M is a depreciating asset. With Lightwave Solar's maintenance programs, you maximize production and extend equipment life.</p>
+    </div>
+
+    <div class="om-features">
+      <div class="om-card reveal reveal-delay-1">
+        <div class="icon">📊</div>
+        <h4>Performance Monitoring</h4>
+        <p>Real-time data collection and analysis. We catch underperformance before it shows up on your utility bill.</p>
+      </div>
+
+      <div class="om-card reveal reveal-delay-2">
+        <div class="icon">🔍</div>
+        <h4>Preventive Maintenance</h4>
+        <p>Scheduled inspections, cleaning, connection checks, and inverter servicing to prevent problems before they start.</p>
+      </div>
+
+      <div class="om-card reveal reveal-delay-3">
+        <div class="icon">⚡</div>
+        <h4>Rapid Fault Response</h4>
+        <p>When an alert fires, we respond fast. Minimize downtime and lost production with an experienced local crew.</p>
+      </div>
+
+      <div class="om-card reveal reveal-delay-4">
+        <div class="icon">📋</div>
+        <h4>Detailed Reporting</h4>
+        <p>Monthly and annual production reports, equipment health summaries, and recommendations — ready for your stakeholders.</p>
+      </div>
+
+      <div class="om-card reveal reveal-delay-1">
+        <div class="icon">🌿</div>
+        <h4>Vegetation Management</h4>
+        <p>Ground-mount systems need active vegetation control. We keep your site clear and your panels accessible.</p>
+      </div>
+
+      <div class="om-card reveal reveal-delay-2">
+        <div class="icon">🤝</div>
+        <h4>Third-Party System Support</h4>
+        <p>Inherited a system someone else installed? No problem. We take over O&M for any commercial system, regardless of original installer.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner section-pad-sm">
+  <div class="container">
+    <div class="cta-inner reveal">
+      <div>
+        <h2>Let's Talk About Your Project</h2>
+        <p>Whether you're scoping your first commercial installation or inheriting a system that needs care — we're ready to help.</p>
+      </div>
+      <a href="contact.html" class="btn btn-cta-dark btn-lg">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+        Request a Commercial Quote
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <svg width="28" height="28" viewBox="0 0 36 36" fill="none">
+            <circle cx="18" cy="18" r="7" fill="#F5A623"/>
+            <line x1="18" y1="2" x2="18" y2="8" stroke="#F5A623" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="18" y1="28" x2="18" y2="34" stroke="#F5A623" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="2" y1="18" x2="8" y2="18" stroke="#F5A623" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="28" y1="18" x2="34" y2="18" stroke="#F5A623" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+          Lightwave<span class="accent"> Solar</span>
+        </div>
+        <p>Tennessee Valley's trusted source for turnkey solar solutions since 2006. Experience. Quality. Passion.</p>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul class="footer-links">
+          <li><a href="residential.html">Residential Solar</a></li>
+          <li><a href="commercial.html">Commercial Solar</a></li>
+          <li><a href="contact.html">Utility-Scale Solar</a></li>
+          <li><a href="contact.html">Solar O&M</a></li>
+          <li><a href="residential.html#storage">Battery Storage</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Get in Touch</h4>
+        <ul class="footer-contact">
+          <li><span class="icon">📍</span>Tennessee Valley &amp; Southeast Region</li>
+          <li><span class="icon">📞</span><a href="tel:+18005556789" style="color:rgba(255,255,255,.6)">(800) 555-SOLAR</a></li>
+          <li><span class="icon">✉️</span><a href="mailto:info@lightwavesolar.com" style="color:rgba(255,255,255,.6)">info@lightwavesolar.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Lightwave Solar. All rights reserved.</span>
+      <span>Established 2006 · Tennessee Valley's Solar Experts</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
